@@ -6,14 +6,24 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+     </head>
+    <body>
+    <nav>
+        <ul>
+            <li><a href="{{path('app_home') }}">Home</a></li> 
+            <li><a href="{{path('app_category') }}">Liste des catégories</a></li>    
+            <li><a href="{{path('app_topic') }}">Liste des topics/sujets</a></li>          
+            <li><a href="{{path('app_post') }}">Liste des posts/messages</a></li>  
+            <li><a href="{{path('app_user') }}">Liste des utilisateurs</a></li>  
+        </ul>
+     </nav>
+ 
+        {% block body %}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}          
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
     </body>
 </html>
