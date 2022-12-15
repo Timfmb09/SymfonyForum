@@ -15,10 +15,42 @@ class PostController extends AbstractController
      */
     public function index(ManagerRegistry $doctrine): Response
     {
-        $posts = $doctrine->getRepository(Post::class)->findBy([],["datePost"=> "ASC"]);
+        $posts = $doctrine->getRepository(Post::class)->findBy([],["id"=> "ASC"]);
         return $this->render('post/index.html.twig', [
-            'controller_name' => 'PostController',
             'posts' => 'posts'
         ]);
     }
+
+
+    /**
+     * @Route("/post/{id}/delete", name="delete_post")
+     * @Route("/post/{id}/edit", name="edit_post")     * 
+     */
+    public function delete(ManagerRegistry $doctrine, Post $post): Response
+    {
+        $id = $post->getTopic()->getId();
+
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($post);
+        $entityManager->flush();
+        // return $this->redirectToRoute('app_post');
+        // }
+        return $this->redirectToRoute('show_topic', [
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * @Route("/post", name="show_post")
+     */
+    public function show(Post $post): Response
+    {
+            return $this->render('post/show.html.twig', [            
+            'post' => $post,
+        ]);
+    }
+
+
+
+
 }

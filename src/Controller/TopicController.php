@@ -2,19 +2,53 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use App\Entity\Topic;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TopicController extends AbstractController
 {
     /**
      * @Route("/topic", name="app_topic")
      */
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
+        $topics = $doctrine->getRepository(Topic::class)->findBy([],["id"=> "ASC"]);
         return $this->render('topic/index.html.twig', [
-            'controller_name' => 'TopicController',
+            'topics' => 'topics'
         ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }
