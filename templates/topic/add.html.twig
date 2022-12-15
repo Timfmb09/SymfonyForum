@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Topic{% endblock %}
+
+{% block body %}
+    {% if edit %}
+    <h1>Editer un Topic</h1>
+    {% else %}
+    <h1>Ajouter un Topic</h1>
+    {% endif %}
+<div class="add">
+    {{ form_start(formAddTopic)}}
+    {{ form_row(formAddTopic)}}
+    {{ form_end(formAddTopic)}}
+</div>
+{% endblock %}

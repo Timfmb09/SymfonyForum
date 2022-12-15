@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Topic;
+use App\Form\TopicType;
 use App\Entity\Category;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,7 +54,7 @@ class TopicController extends AbstractController
         //vue pour afficher le formulaire d'ajout ou d'edition
         //vue pour afficher le formulaire d'ajout
         return $this->render('topic/add.html.twig', [
-            'formAddtopic' => $form->createView(),
+            'formAddTopic' => $form->createView(),
             'edit' =>$topic->getId(),            
         ]);
 
@@ -62,7 +63,7 @@ class TopicController extends AbstractController
     /**
      * @Route("/topic/{id}/delete", name="delete_topic")
      */
-    public function delete(ManagerRegistry $doctrine, topic $topic): Response
+    public function delete(ManagerRegistry $doctrine, Topic $topic): Response
     {
         $id = $topic->getTopic()->getId();
 
@@ -80,7 +81,7 @@ class TopicController extends AbstractController
     /**
      * @Route("/topic/{id}", name="show_topic")
      */
-    public function show(topic $topic): Response
+    public function show(Topic $topic): Response
     {
             return $this->render('topic/show.html.twig', [            
             'topic' => $topic,
