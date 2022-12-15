@@ -94,6 +94,6 @@ class Post
 
     public function __toString()
     {
-        return $this ->message." ". date_format($this->datePost, "d/m/Y");
+        return $this ->message." ". date_format($this->datePost, "d/m/Y"). " ". $this ->id;
     }
 }

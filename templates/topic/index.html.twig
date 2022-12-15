@@ -1,12 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TopicController!{% endblock %}
+{% block title %}Hello topicController!{% endblock %}
 
 {% block body %}
-    <h1>Liste des topics/sujets</h1>
-
+    <table>
+         <h1>Liste des topics</h1>
+    <tbody>
     {% for topic in topics %}
-        {{topic}}<br>
+    <tr>
+        <td><a href="{{ path('show_topic', {'id':topic.id}) }}">{{ topic }}</a></td>
+        <td><a class="btn" href="{{ path('edit_topic', {'id':topic.id}) }}">Editer</a></td>
+        <td><a class="btn" href="{{ path('delete_topic', {'id':topic.id}) }}">Supprimer</a></td>
+        
+    </tr>
     {% endfor %}
+    </tbody>
+    </table>
 
+    <p>
+    <a class="btn" href="{{ path('add_topic') }}">Ajouter un topic</a>
+    </p>
+    
 {% endblock %}

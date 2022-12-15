@@ -1,11 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PostController!{% endblock %}
+{% block title %}Hello postController!{% endblock %}
 
 {% block body %}
-    <h1>Liste des posts/messages</h1>
-
+    <table>
+         <h1>Liste des posts</h1>
+    <tbody>
     {% for post in posts %}
-        {{post}}<br>
+    <tr>
+        <td><a href="{{ path('show_post', {'id':post.id}) }}">{{ post }}</a></td>
+        <td><a class="btn" href="{{ path('edit_post', {'id':post.id}) }}">Editer</a></td>
+        <td><a class="btn" href="{{ path('delete_post', {'id':post.id}) }}">Supprimer</a></td>
+        
+    </tr>
     {% endfor %}
+    </tbody>
+    </table>
+
+    <p>
+    <a class="btn" href="{{ path('add_post') }}">Ajouter un post</a>
+    </p>
+    
 {% endblock %}
