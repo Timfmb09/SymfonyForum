@@ -23,26 +23,8 @@ class PostController extends AbstractController
         ]);
     }
 
-
     /**
-     * @Route("/post/{id}/delete", name="delete_post")
-     * @Route("/post/{id}/edit", name="edit_post")     * 
-     */
-    public function delete(ManagerRegistry $doctrine, Post $post): Response
-    {
-       
-        $entityManager = $doctrine->getManager();
-        $entityManager->remove($post);
-        $entityManager->flush();
-        
-        $id = $post->getTopic()->getId();
-        return $this->redirectToRoute('show_topic', [
-            'id' => $id
-        ]);
-    }
-
-    /**
-     * @Route("/post", name="add_post")
+     * @Route("/post/add", name="add_post")
      * @Route("/post/{id}/edit", name="edit_post")
      */
     public function add(ManagerRegistry $doctrine, Post $post = null, Request $request) : Response 
@@ -77,13 +59,31 @@ class PostController extends AbstractController
 
     }
 
+
     /**
-     * @Route("/post", name="show_post")
+     * @Route("/post/{id}/delete", name="delete_post")
+     */
+    public function delete(ManagerRegistry $doctrine, Post $post): Response
+    {
+       
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($post);
+        $entityManager->flush();
+        
+        $id = $post->getTopic()->getId();
+        return $this->redirectToRoute('show_topic', [
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * @Route("/post/{id}", name="show_post")
      */
     public function show(Post $post): Response
     {
             return $this->render('post/show.html.twig', [            
             'post' => $post,
+           
         ]);
     }
 

@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un post{% endblock %}
+{% block title %}Ajouter un post/message{% endblock %}
 
 {% block body %}
     {% if edit %}
-    <h1>Editer un post</h1>
+    <h1>Editer un post/message</h1>
     {% else %}
-    <h1>Ajouter un post</h1>
+    <h1>Ajouter un post/message</h1>
     {% endif %}
 <div class="add">
     {{ form_start(formAddPost)}}

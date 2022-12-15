@@ -38,10 +38,22 @@ class RegistrationFormType extends AbstractType
             'required' => true,
             'first_options'  => ['label' => 'Password'],
             'second_options' => ['label' => 'Repeat Password'],
-            
+            'help' => "8 caractères minimum",
+            'attr' => ['autocomplete' => 'new-password'],
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Please enter a password',
+                ]),
+                new Length([
+                    'min' => 8,
+                    'minMessage' => 'Your password need to contain a limit of {{ limit }} caracters',
+                    // max length allowed by Symfony for security reasons
+                    'max' => 4096,
                    
+                ]),
+            ],
+
         ])
-        
     ;
 }
 

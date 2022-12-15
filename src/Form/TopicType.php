@@ -2,11 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
+use Doctrine\DBAL\Types\BooleanType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class TopicType extends AbstractType
 {
@@ -17,7 +21,19 @@ class TopicType extends AbstractType
             'attr' => ['class'=> 'form-control', 'placeholder'=> 'Valide']
     ])
 
-            // ->add('dateTopic', DateTimeType::class, [
+            ->add('dateTopic', DateTimeType::class, [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'form-control']
+            ])
+
+            ->add('category', EntityType::class, [
+                'class'=> Category::class,
+                'choice_label'=> 'categoryName', 
+                'placeholder' => 'Selection de la catégorie',
+                'attr' => ['class' => 'form-control']
+            ])
+
+            // ->add('locked', TextType ::class, [
             //     'widget' => 'single_text',
             //     'attr' => ['class' => 'form-control']
             // ])

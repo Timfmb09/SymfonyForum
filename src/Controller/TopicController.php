@@ -26,7 +26,7 @@ class TopicController extends AbstractController
     }
 
     /**
-     * @Route("/topic", name="add_topic")
+     * @Route("/topic/add", name="add_topic")
      * @Route("/topic/{id}/edit", name="edit_topic")
      */
     public function add(ManagerRegistry $doctrine, Topic $topic = null, Request $request) : Response 
@@ -55,7 +55,7 @@ class TopicController extends AbstractController
         //vue pour afficher le formulaire d'ajout
         return $this->render('topic/add.html.twig', [
             'formAddTopic' => $form->createView(),
-            'edit' =>$topic->getId(),            
+            'edit' =>$topic->getId(),                     
         ]);
 
     }

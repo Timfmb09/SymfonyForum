@@ -2,11 +2,14 @@
 
 namespace App\Form;
 
+use App\Entity\Topic;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class PostType extends AbstractType
 {
@@ -17,11 +20,20 @@ class PostType extends AbstractType
                 'attr' => ['class'=> 'form-control', 'placeholder'=> 'Valide']
             ])
 
-            // ->add('datePost', DateTimeType::class, [
-            //     'widget' => 'single_text',
-            //     'attr' => ['class' => 'form-control']
-            // ])
+            ->add('datePost', DateTimeType::class, [
+                'widget' => 'single_text',
+                'attr' => ['class' => 'form-control']
+            ])
 
+            ->add('topic', EntityType::class, [
+                'class'=> Topic::class,
+                'choice_label'=> 'title', 
+                'placeholder' => 'Selection du topic/sujet',
+                'attr' => ['class' => 'form-control']
+            ])
+           
+
+        
             ->add('submit', SubmitType::class, [
                 'label' => 'Confirmer',
                 'attr' => ['class' => 'btn']
