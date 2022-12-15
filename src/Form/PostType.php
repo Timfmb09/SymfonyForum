@@ -15,10 +15,10 @@ class PostType extends AbstractType
                 'attr' => ['class'=> 'form-control', 'placeholder'=> 'Valide']
             ])
 
-            ->add('datePost', DateTimeType::class, [
-                'widget' => 'single_text',
-                'attr' => ['class' => 'form-control']
-            ])
+            // ->add('datePost', DateTimeType::class, [
+            //     'widget' => 'single_text',
+            //     'attr' => ['class' => 'form-control']
+            // ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Confirmer',

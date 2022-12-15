@@ -15,10 +15,10 @@ class TopicType extends AbstractType
             'attr' => ['class'=> 'form-control', 'placeholder'=> 'Valide']
     ])
 
-            ->add('dateTopic', DateTimeType::class, [
-                'widget' => 'single_text',
-                'attr' => ['class' => 'form-control']
-            ])
+            // ->add('dateTopic', DateTimeType::class, [
+            //     'widget' => 'single_text',
+            //     'attr' => ['class' => 'form-control']
+            // ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Confirmer',

@@ -18,9 +18,21 @@ class TopicController extends AbstractController
     {
         $topics = $doctrine->getRepository(Topic::class)->findBy([],["id"=> "ASC"]);
         return $this->render('topic/index.html.twig', [
-            'topics' => 'topics'
+            'topics' => $topics
         ]);
     }
+
+    // add
+
+    // edit
+
+
+    // delete
+
+    // show
+
+
+
 
 
 
