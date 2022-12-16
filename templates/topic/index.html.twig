@@ -8,7 +8,7 @@
     <tbody>
     {% for topic in topics %}
     <tr>
-        <td><a href="{{ path('show_topic', {'id':topic.id}) }}">{{ topic }}</a></td>
+        <td><a href="{{ path('show_topic', {'id':topic.id}) }}">{{ topic }} {{topic.user.pseudo}}</a></td>
         <td><a class="btn" href="{{ path('edit_topic', {'id':topic.id}) }}">Editer</a></td>
         <td><a class="btn" href="{{ path('delete_topic', {'id':topic.id}) }}">Supprimer</a></td>
         
