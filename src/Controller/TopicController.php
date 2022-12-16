@@ -42,6 +42,8 @@ class TopicController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) { 
             
             $topic = $form->getData();
+            $topic->setLocked(false);
+            
             $entityManager = $doctrine->getManager();
             //prepare
             $entityManager->persist($topic);
@@ -55,7 +57,8 @@ class TopicController extends AbstractController
         //vue pour afficher le formulaire d'ajout
         return $this->render('topic/add.html.twig', [
             'formAddTopic' => $form->createView(),
-            'edit' =>$topic->getId(),                     
+            'edit' =>$topic->getId(),  
+                               
         ]);
 
     }

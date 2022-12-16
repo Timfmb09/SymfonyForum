@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\Category;
 use Doctrine\DBAL\Types\BooleanType;
 use Symfony\Component\Form\AbstractType;
@@ -32,11 +33,12 @@ class TopicType extends AbstractType
                 'placeholder' => 'Selection de la catégorie',
                 'attr' => ['class' => 'form-control']
             ])
-
-            // ->add('locked', TextType ::class, [
-            //     'widget' => 'single_text',
-            //     'attr' => ['class' => 'form-control']
-            // ])
+            ->add('user', EntityType::class, [
+                'class'=> User::class,
+                'choice_label'=> 'id', 
+                'placeholder' => 'Selection du user',
+                'attr' => ['class' => 'form-control']
+            ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Confirmer',

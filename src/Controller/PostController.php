@@ -39,7 +39,7 @@ class PostController extends AbstractController
         //si la données est "sanitize" on l'envoi
         if ($form->isSubmitted() && $form->isValid()) { 
             
-            $post = $form->getData();
+            $post = $form->getData();          
             $entityManager = $doctrine->getManager();
             //prepare
             $entityManager->persist($post);
@@ -54,7 +54,7 @@ class PostController extends AbstractController
         return $this->render('post/add.html.twig', [
             'formAddPost' => $form->createView(),
             'edit' =>$post->getId(),
-            'formAddPost' => $form->createView()
+            
         ]);
 
     }

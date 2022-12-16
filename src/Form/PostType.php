@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\Topic;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -31,7 +32,13 @@ class PostType extends AbstractType
                 'placeholder' => 'Selection du topic/sujet',
                 'attr' => ['class' => 'form-control']
             ])
-           
+            
+            ->add('user', EntityType::class, [
+                'class'=> User::class,
+                'choice_label'=> 'id', 
+                'placeholder' => 'Selection du user',
+                'attr' => ['class' => 'form-control']
+            ])
 
         
             ->add('submit', SubmitType::class, [
