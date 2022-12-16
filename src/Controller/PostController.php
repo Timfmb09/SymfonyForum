@@ -71,7 +71,7 @@ class PostController extends AbstractController
         $entityManager->flush();
         
         $id = $post->getTopic()->getId();
-        return $this->redirectToRoute('show_topic', [
+        return $this->redirectToRoute('app_post', [
             'id' => $id
         ]);
     }

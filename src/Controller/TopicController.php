@@ -66,17 +66,17 @@ class TopicController extends AbstractController
     /**
      * @Route("/topic/{id}/delete", name="delete_topic")
      */
-    public function delete(ManagerRegistry $doctrine, Topic $topic): Response
+    public function delete(ManagerRegistry $doctrine, Topic $topic)
     {
-        $id = $topic->getTopic()->getId();
+        // $id = $topic->getTopic()->getId();
 
         $entityManager = $doctrine->getManager();
         $entityManager->remove($topic);
         $entityManager->flush();
         // return $this->redirectToRoute('app_topic');
         // }
-        return $this->redirectToRoute('show_topic', [
-            'id' => $id
+        return $this->redirectToRoute('app_topic', [
+            // 'id' => $id
         ]);
     }
 
