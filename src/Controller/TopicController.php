@@ -19,7 +19,7 @@ class TopicController extends AbstractController
      */
     public function index(ManagerRegistry $doctrine): Response
     {
-        $topics = $doctrine->getRepository(Topic::class)->findBy([],["id"=> "ASC"]);
+        $topics = $doctrine->getRepository(Topic::class)->findBy([],["id"=> "DESC"]);
         return $this->render('topic/index.html.twig', [
             'topics' => $topics
         ]);

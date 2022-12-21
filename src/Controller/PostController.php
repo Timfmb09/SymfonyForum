@@ -65,13 +65,17 @@ class PostController extends AbstractController
      */
     public function delete(ManagerRegistry $doctrine, Post $post): Response
     {
-       
+        $firstPost = $post->getTopic()->getPost() [0]->getId();
+        if($post->getMember()->getId() ==$this->getUser()->getId() && $firstPost !=$post->getId())
+    
+       {
         $entityManager = $doctrine->getManager();
         $entityManager->remove($post);
         $entityManager->flush();
-        
+       }
+
         $id = $post->getTopic()->getId();
-        return $this->redirectToRoute('app_post', [
+        return $this->redirectToRoute('show_topic', [
             'id' => $id
         ]);
     }

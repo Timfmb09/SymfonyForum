@@ -21,19 +21,20 @@
         </ul>
     </nav>
                  
-                {% if not app.user %}
+                {# {% if not app.user %}
                     <a href="{{path('app_register')}}">S'enregistrer</a>
                     <a href="{{path('app_login')}}">Se connecter</a>                          
                 {% else %}
                     <a href="{{path('app_logout')}}">Se déconnecter</a>
-                {% endif %}
+                {% endif %} #}
 
-            {# {% if app.user %}
+            {% if app.user %}
+                <a href="{{path('app_user')}}">{{app.user}}</a>
                 <a href="{{path('app_logout')}}">Se déconnecter</a>
                 {% else %}
                 <a href="{{path('app_login')}}">Se connecter</a>
                 <a href="{{path('app_register')}}">S'enregistrer</a>
-            {% endif %} #}
+            {% endif %}
 
             {# {% if is_granted('ROLE_ADMIN') %}         #}
                 {# Si l'utilisateur est authentifié et qu'il est admin #}        
