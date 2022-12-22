@@ -62,29 +62,29 @@ class CategoryController extends AbstractController
     /**
      * @Route("/category/{id}/delete", name="delete_category")
      */
-    public function delete(ManagerRegistry $doctrine, Category $category): Response
+    public function delete(ManagerRegistry $doctrine, Category $category)
     {
-        
+        // $id = $category->getcategory()->getId();
 
         $entityManager = $doctrine->getManager();
         $entityManager->remove($category);
         $entityManager->flush();
         // return $this->redirectToRoute('app_category');
         // }
-        $id = $category->getCategory()->getId();
-        return $this->redirectToRoute('show_category', [
-            'id' => $id
+        return $this->redirectToRoute('app_category', [
+            // 'id' => $id
         ]);
     }
-
 
     /**
      * @Route("/category/{id}", name="show_category")
      */
     public function show(Category $category): Response
     {
+            // $topics=$category->getTopics();
             return $this->render('category/show.html.twig', [            
             'category' => $category,
+            // 'topics' => $topics
         ]);
     }
 

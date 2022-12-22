@@ -13,21 +13,13 @@
     <body>
     <nav>
         <ul>
-            <li><a href="{{path('app_home') }}">Home</a></li> 
-            <li><a href="{{path('app_category') }}">Liste des catégories</a></li>    
-            <li><a href="{{path('app_topic') }}">Liste des topics/sujets</a></li>          
-            <li><a href="{{path('app_post') }}">Liste des posts/messages</a></li>  
+            <li><a href="{{path('app_home')}}">Home</a></li> 
+            <li><a href="{{path('app_category')}}">Liste des catégories</a></li>    
+            <li><a href="{{path('app_topic')}}">Liste des topics/sujets</a></li>          
+            <li><a href="{{path('app_post')}}">Liste des posts/messages</a></li>  
             {# <li><a href="{{path('app_user') }}">Liste des utilisateurs</a></li>   #}
         </ul>
     </nav>
-                 
-                {# {% if not app.user %}
-                    <a href="{{path('app_register')}}">S'enregistrer</a>
-                    <a href="{{path('app_login')}}">Se connecter</a>                          
-                {% else %}
-                    <a href="{{path('app_logout')}}">Se déconnecter</a>
-                {% endif %} #}
-
             {% if app.user %}
                 <a href="{{path('app_user')}}">Bienvenue {{app.user.pseudo}}</a>
                 <a href="{{path('app_logout')}}">Se déconnecter</a>
@@ -35,12 +27,6 @@
                 <a href="{{path('app_login')}}">Se connecter</a>
                 <a href="{{path('app_register')}}">S'enregistrer</a>
             {% endif %}
-
-            {# {% if is_granted('ROLE_ADMIN') %}         #}
-                {# Si l'utilisateur est authentifié et qu'il est admin #}        
-                {# <a class="btn btn-outline-warning" href="{{ path('admin') }}">Page admin</a>
-            {% endif %} #}
-
 
         {% block body %}
         {% endblock %}
