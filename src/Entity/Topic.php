@@ -47,7 +47,7 @@ class Topic
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="topics")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
@@ -154,7 +154,7 @@ class Topic
 
     public function __toString()
     {
-        return $this ->title." ". date_format($this->dateTopic, "d/m/Y");
+        return $this ->title." ". date_format($this->dateTopic, "d/m/Y") ;
     }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Form\CategoryType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category", name="add_category")
+     * @Route("/category/add", name="add_category")
      * @Route("/category/{id}/edit", name="edit_category")
      */
     public function add(ManagerRegistry $doctrine, Category $category = null, Request $request) : Response 
@@ -53,7 +54,7 @@ class CategoryController extends AbstractController
         return $this->render('category/add.html.twig', [
             'formAddCategory' => $form->createView(),
             'edit' =>$category->getId(),
-            'formAddCategory' => $form->createView()
+            
         ]);
 
     }
@@ -63,13 +64,14 @@ class CategoryController extends AbstractController
      */
     public function delete(ManagerRegistry $doctrine, Category $category): Response
     {
-        $id = $category->getTopic()->getId();
+        
 
         $entityManager = $doctrine->getManager();
         $entityManager->remove($category);
         $entityManager->flush();
         // return $this->redirectToRoute('app_category');
         // }
+        $id = $category->getCategory()->getId();
         return $this->redirectToRoute('show_category', [
             'id' => $id
         ]);

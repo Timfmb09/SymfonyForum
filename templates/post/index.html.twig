@@ -11,9 +11,9 @@
         <td><a href="{{ path('show_post', {'id':post.id}) }}">{{ post }} {{post.user.pseudo}}</a></td>
         <td><a class="btn" href="{{ path('edit_post', {'id':post.id}) }}">Editer</a></td>
         <td><a class="btn" href="{{ path('delete_post', {'id':post.id}) }}">Supprimer</a></td>
-        
     </tr>
     {% endfor %}
+    
     </tbody>
     </table>
 

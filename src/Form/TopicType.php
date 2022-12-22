@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Post;
 use App\Entity\User;
 use App\Entity\Category;
 use Doctrine\DBAL\Types\BooleanType;
@@ -31,12 +32,6 @@ class TopicType extends AbstractType
                 'class'=> Category::class,
                 'choice_label'=> 'categoryName', 
                 'placeholder' => 'Selection de la catégorie',
-                'attr' => ['class' => 'form-control']
-            ])
-            ->add('user', EntityType::class, [
-                'class'=> User::class,
-                'choice_label'=> 'id', 
-                'placeholder' => 'Selection du user',
                 'attr' => ['class' => 'form-control']
             ])
 
